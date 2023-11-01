@@ -11,13 +11,17 @@ public class TestReadFile {
 		// Scanner input = new Scanner(new File("data/hamlet.txt"));
 		Scanner input = new Scanner(new File("data/fit.txt"));
 
-		while (input.hasNext()) {
-			String word = input.next();
-			System.out.println(word);
-		}
+//		while (input.hasNext()) {
+//			String word = input.next();
+//			System.out.println(word);
+//		}
 		MyWordCount myWordCount = new MyWordCount();
 		System.out.println(myWordCount.getWordCounts());
 		System.out.println(myWordCount.getUniqueWords());
+		System.out.println(myWordCount.getDistinctWords());
+		System.out.println(myWordCount.printWordCounts());
+		System.out.println(myWordCount.exportWordCountsByOccurence());
+		System.out.println(myWordCount.filterWords("h"));
 
 	}
 }
