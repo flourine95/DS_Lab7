@@ -1,7 +1,7 @@
 package set_student;
 
 public class WordCount {
-    private String word;
+    private final String word;
     private int count;
 
     public WordCount(String word, int count) {
@@ -31,10 +31,6 @@ public class WordCount {
 
     public int getCount() {
         return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
     }
 
     public String getWord() {

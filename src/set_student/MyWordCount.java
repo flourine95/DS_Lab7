@@ -2,12 +2,11 @@ package set_student;
 
 import java.io.FileNotFoundException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class MyWordCount {
-    public static final String fileName = "data/fit.txt";
+    public static final String fileName = "data/hamlet.txt";
 
-    private List<String> words = new ArrayList<>();
+    private final List<String> words = new ArrayList<>();
 
     public MyWordCount() {
         try {
