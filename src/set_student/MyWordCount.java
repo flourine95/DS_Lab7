@@ -2,9 +2,10 @@ package set_student;
 
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MyWordCount {
-    public static final String fileName = "data/hamlet.txt";
+    public static final String fileName = "data/fit.txt";
 
     private final List<String> words = new ArrayList<>();
 
@@ -21,6 +22,7 @@ public class MyWordCount {
     // data/hamlet.txt (or fit.txt)
     // In this method, we do not consider the order of tokens.
     public int getCount(String pattern) {
+        /*
         int count = 0;
         for (String word : words) {
             if (word.equals(pattern)) {
@@ -28,9 +30,12 @@ public class MyWordCount {
             }
         }
         return count;
+        */
+        return (int) words.stream().filter(word -> word.equals(pattern)).count();
     }
 
     public List<WordCount> getWordCounts() {
+        /*
         List<WordCount> wordCounts = new ArrayList<>();
         for (String word : words) {
             WordCount wordCount = new WordCount(word, getCount(word));
@@ -39,6 +44,12 @@ public class MyWordCount {
             }
         }
         return wordCounts;
+        */
+        return words
+                .stream()
+                .map(word -> new WordCount(word, getCount(word)))
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     // Returns the words that their appearance are 1, do not consider duplidated
@@ -55,6 +66,7 @@ public class MyWordCount {
         }
         return uniqueWords;
         */
+        /*
         Set<String> uniqueWords = new HashSet<>();
         for (WordCount wordCount : getWordCounts()) {
             if (wordCount.getCount() == 1) {
@@ -62,6 +74,12 @@ public class MyWordCount {
             }
         }
         return uniqueWords;
+        */
+        return getWordCounts()
+                .stream()
+                .filter(wordCount -> wordCount.getCount() == 1)
+                .map(WordCount::getWord)
+                .collect(Collectors.toSet());
     }
 
     // Returns the words in the text file, duplicated words appear once in the
